@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart</title>
+<link rel="stylesheet" href="style.css">
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Outfits By Akshi</h1>
+      <p>Curated By You, For You</p>
+    </div>
+  </header>
+  <header>
+    <h1>Your Cart</h1>
+  </header>
+
+  <div class="container" id="cartContainer"></div>
+  <div class="total" id="totalPrice"></div>
+
+  <div style="text-align:center; margin-top: 2rem;">
+    <button onclick="goToCheckout()" style="
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    ">
+      Proceed to Checkout
+    </button>
+  </div>
+
+<script>
+  const cartContainer = document.getElementById("cartContainer");
+  const totalPriceElement = document.getElementById("totalPrice");
+
+  function renderCart() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cartContainer.innerHTML = "";
+    let total = 0;
+
+    if (cart.length === 0) {
+      cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+      totalPriceElement.textContent = "";
+      updateCartCount();
+      return;
+    }
+
+    cart.forEach((item, index) => {
+      total += item.price || 0;
+
+      const div = document.createElement("div");
+      div.className = "cart-item";
+
+      div.innerHTML = `
+        <img src="${item.image}" alt="${item.name}" />
+        <div class="item-details">
+          <strong>${item.name}</strong><br/>
+          Size: ${item.size}<br/>
+          Price: ₹${item.price ? item.price.toFixed(2) : "0.00"}
+        </div>
+        <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+      `;
+
+      cartContainer.appendChild(div);
+    });
+
+    totalPriceElement.textContent = "Total: ₹" + total.toFixed(2);
+    updateCartCount();
+  }
+
+function removeItem(index) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  window.dispatchEvent(new Event("storage"));
+
+  renderCart();  
+  updateCartCount();  // will now correctly refresh badge
+}
+      function goToCheckout() {
+      window.location.href = "Checkout.html";
+    }
+
+function updateCartCount() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartCountElement = document.getElementById("cart-count");
+  if (cartCountElement) {
+    // count total quantity of items
+    let count = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+
+    if (count > 0) {
+      cartCountElement.textContent = count;
+      cartCountElement.style.display = "inline-block";
+    } else {
+      cartCountElement.style.display = "none";
+    }
+  }
+}
+
+  document.addEventListener("DOMContentLoaded", renderCart);
+</script>
+<script>
+  // ✅ listen for cart updates from other pages/tabs
+  window.addEventListener("storage", function (event) {
+    if (event.key === "cart") {
+      renderCart();      // refresh items
+      updateCartCount(); // refresh badge
+    }
+  });
+</script>
+</body>
+</html>
