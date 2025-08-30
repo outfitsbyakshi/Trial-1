@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outfits by Akshi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div>
+      <h1>Outfits By Akshi</h1>
+      <p>Curated By You, For You</p>
+    </div>
+    <nav>
+            <a href="index3.html">Home</a>
+<a href="javascript:void(0)" onclick="openCart()" class="cart">
+  🛒
+  <span id="cart-count" class="cart-badge">0</span>
+</a>
+    </nav>
+    <!-- Cart Panel -->
+    <div id="cartPanel" class="cart-panel">
+      <button class="close-btn" onclick="closeCart()">✖</button>
+      <iframe src="cart.html" class="cart-frame"></iframe>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Product with auto cart data -->
+    <div class="product" 
+         data-name="Floral Lace Hair Bow Clip 🌸✨"" 
+         data-price="1" 
+         data-image="https://i.ibb.co/cmvW0ZQ/IMG-20250825-121209.jpg">
+      
+      <img src="https://i.ibb.co/cmvW0ZQ/IMG-20250825-121209.jpg" alt="Floral Lace Hair Bow Clip 🌸✨">
+  
+      <div class="product-info">
+        <h2>Floral Lace Hair Bow Clip 🌸✨
+</h2>
+        <p>Add a touch of elegance to your hairstyle with this romantic floral lace bow clip. Featuring delicate embroidered roses on sheer lace fabric, this oversized bow instantly elevates any look—whether for a casual day out, a date, or a special occasion. The soft cream tones with pastel pink florals give it a vintage yet feminine charm, perfect for pairing with dresses, blouses, or even everyday outfits.
+
+Material: Sheer lace with floral embroidery
+
+Color: Cream with pastel pink & green details
+
+Style: Oversized bow with long tails
+
+Perfect for: Daily wear, parties, picnics, or gifting 🎀
+</p>
+        <p><strong>Price:</strong>₹1</p>
+
+        <label for="size">Select Size:</label>
+        <select id="size">
+          <option value="XS">XS</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+        </select>
+
+        <br><br>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button class="btn-white add-to-cart">Add to Cart</button>
+          <button class="btn-black buy-now">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div id="toast"></div>
+  <footer>
+    <p>Follow us on Instagram @yourbrand | Worldwide Shipping</p>
+  </footer>
+
+  <script src="Product.js"></script>
+</body>
+</html>
