@@ -8,10 +8,20 @@
 </head>
 <body>
 
-<header>
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+    <!-- Hamburger icon -->
+  <button class="menu-btn" onclick="openSidebar()">☰</button>
+
+  <!-- Sidebar -->
+  <div id="mySidebar" class="sidebar">
+    <span class="close-btn" onclick="closeSidebar()">×</span>
+    <a href="#">Home</a>
+    <a href="#">Categories</a>
+    <a href="#">Shop</a>
+    <a href="#">Contact</a>
+  </div>
     <div>
       <h1>Outfits By Akshi</h1>
-      <p>Curated By You, For You</p>
     </div>
     <nav>
 <a href="javascript:void(0)" onclick="openCart()" class="cart">
