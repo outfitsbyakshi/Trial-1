@@ -432,4 +432,51 @@ footer a:hover {
 .footer-buttons {
   display: flex;
   gap: 1rem;
-           }
+}
+/* Page footer (Instagram, etc.) */
+.footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 60px; /* space above so it doesn’t overlap sticky bar */
+}
+.footer {
+  display: flex;
+  justify-content: space-between; /* left te text, right te buttons */
+  align-items: center;
+  padding: 15px;
+  background: #f8f8f8; /* optional */
+  border-top: 1px solid #ddd; /* optional */
+}
+.footer-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: flex-end; /* saare buttons right side */
+  gap: 10px; /* button de vich gap */
+  padding: 10px 20px; /* 🟢 right side thoda andar le auna */
+  box-sizing: border-box;
+}
+
+.footer-bar button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart {
+  background-color: #222;
+  color: #fff;
+}
+
+.buy-now {
+  background-color: black;
+  color: #fff;
+    }
+        
