@@ -36,6 +36,20 @@
     header img.cart-icon {
   width: 28px;
   filter: contrast(1.2);
+}header nav a.cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  
+  /* new line to nudge it up */
+  transform: translateY(-8px);  
 }
     nav a {
       margin-left: 20px;
@@ -478,5 +492,57 @@ footer a:hover {
 .buy-now {
   background-color: black;
   color: #fff;
+}
+    /* Hamburger button */
+
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #222;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+}
+
+    /* Sidebar menu */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #fff;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+      z-index: 1000;
     }
-        
+
+    .sidebar a {
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #111;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: #111;
+    }
+
+    /* Close button inside sidebar */
+    .sidebar .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 30px;
+      cursor: pointer;
+      color: #111;
+          }
