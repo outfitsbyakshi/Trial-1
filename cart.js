@@ -4,7 +4,7 @@
     function closeCart() {
       document.getElementById("cartPanel").classList.remove("active");
     }
-    // Save cart
+// Save cart
 function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
@@ -65,3 +65,24 @@ window.addEventListener("storage", function (event) {
 
 // Run on page load
 document.addEventListener("DOMContentLoaded", updateCartCount);
+    // hamburger
+      function openSidebar() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+
+    function closeSidebar() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+    // Target all items that have submenu
+document.querySelectorAll('.has-submenu').forEach(item => {
+  item.addEventListener('click', () => {
+    item.classList.toggle('open-submenu');
+  });
+});
+// Toggle submenu inside sidebar
+document.querySelectorAll('.has-submenu > a').forEach(menu => {
+  menu.addEventListener('click', (e) => {
+    e.preventDefault(); // stop link navigation
+    menu.parentElement.classList.toggle('open');
+  });
+});
