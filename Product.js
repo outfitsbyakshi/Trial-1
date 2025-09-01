@@ -116,6 +116,9 @@ document.querySelectorAll('.has-submenu > a').forEach(menu => {
     menu.parentElement.classList.toggle('open');
   });
 });
+function toggleSubmenu() {
+  document.getElementById("submenu").classList.toggle("active");
+}
   //product card with carousel 
 function moveSlide(button, direction) {
   const carousel = button.closest('.carousel');
