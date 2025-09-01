@@ -545,4 +545,26 @@ footer a:hover {
       font-size: 30px;
       cursor: pointer;
       color: #111;
-          }
+    }
+/* Submenu hidden by default */
+.submenu {
+  display: none;
+  padding-left: 15px;
+  background: #fff; /* darker background */
+}
+
+.has-submenu a {
+  display: block;
+  padding: 10px;
+  color: #111;
+  text-decoration: none;
+}
+
+.has-submenu a:hover {
+  background: #fff;
+}
+
+/* When submenu is open */
+.has-submenu.open .submenu {
+  display: block;
+        }
