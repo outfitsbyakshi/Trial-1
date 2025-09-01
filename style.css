@@ -575,6 +575,9 @@ footer a:hover {
 .has-submenu.open .submenu {
   display: block;
 }
+.submenu.active {
+  display: block;
+}
  /*product card with carousel
  /* Carousel container */
 .single-product .carousel {
@@ -620,4 +623,4 @@ footer a:hover {
 
 .single-product .carousel-button.next {
   right: 10px;
-        }
+       }
