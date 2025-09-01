@@ -103,23 +103,30 @@
       font-size: 1.8rem;
       font-family: 'Playfair Display', serif;
     }
+    .products {
+  padding: 20px;
+}
 
-    /* Grids */
-    .category-grid, .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 25px;
-    }
+.product-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+}
 
-    /* Cards */
-    .card {
-      background-color: white;
-      padding: 15px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
+.product-grid::-webkit-scrollbar {
+  display: none; /* hides scrollbar for cleaner look */
+}
+
+.card {
+  flex: 0 0 auto; /* prevent shrinking */
+  width: 180px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+  background: #fff;
+}
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 4px 16px rgba(0,0,0,0.15);
@@ -567,4 +574,50 @@ footer a:hover {
 /* When submenu is open */
 .has-submenu.open .submenu {
   display: block;
+}
+ /*product card with carousel
+ /* Carousel container */
+.single-product .carousel {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  overflow: hidden; /* hide extra images */
+  position: relative;
+  border-radius: 10px;
+}
+
+/* Track with multiple images */
+.single-product .carousel-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Each image should take full carousel width */
+.single-product .carousel-track img {
+  width: 100%;
+  flex: 0 0 100%;  /* ensures only one image shows */
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Arrows */
+.single-product .carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 20px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.single-product .carousel-button.prev {
+  left: 10px;
+}
+
+.single-product .carousel-button.next {
+  right: 10px;
         }
