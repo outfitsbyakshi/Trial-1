@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Outfits By Akshi</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outfits by Akshi</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <h1>Outfits By Akshi</h1>
+
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+    <!-- Hamburger icon -->
+  <button class="menu-btn" onclick="openSidebar()">☰</button>
+
+  <!-- Sidebar -->
+  <div id="mySidebar" class="sidebar">
+    <span class="close-btn" onclick="closeSidebar()">×</span>
+    <a href="index.html">home</a>
+
+<!-- Dropdown menu starts -->
+<div class="has-submenu">
+  <a href="javascript:void(0)">Categories▼</a>
+  <div class="submenu">
+    <a href="Dresses.html">Dresses</a>
+    <a href="Dresses.html">Dresses</a>
+    <a href="Dresses.html">Dresses</a>
+  </div>
+</div>
+<!-- Dropdown menu ends -->
+
+<a href="#">Contact</a>
+  </div>
+    <div>
+      <h1>Outfits By Akshi</h1>
+    </div>
     <nav>
 <a href="javascript:void(0)" onclick="openCart()" class="cart">
   🛒
@@ -22,7 +45,6 @@
       <iframe src="cart.html" class="cart-frame"></iframe>
     </div>
   </header>
-
   <!-- Hero Banner -->
   <section class="banner">
     <img src="https://i.ibb.co/KjD8VtmR/IMG-20250831-014615.png" alt="Hero Banner">
@@ -77,6 +99,6 @@
       <a href="#">Twitter</a>
     </div>
   </footer>
-  <script src="cart.js"></script>
-</body>
+    <script src="cart.js"></script>
+  </body>
 </html>
