@@ -598,8 +598,9 @@ footer a:hover {
 /* Each image should take full carousel width */
 .single-product .carousel-track img {
   width: 100%;
-  flex: 0 0 100%;  /* ensures only one image shows */
-  object-fit: cover;
+  height: 400px;   /* same fixed height */
+  object-fit: contain;  
+  background: #f8f8f8; /* fills blank space */
   border-radius: 10px;
 }
 
@@ -623,4 +624,77 @@ footer a:hover {
 
 .single-product .carousel-button.next {
   right: 10px;
-       }
+}
+/* Container to limit max width */
+.container {
+  max-width: 1000px;   /* keeps it neat on desktop */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Make carousel + info side by side on desktop */
+.single-product {
+  display: flex;
+  flex-direction: column; /* default: stacked (mobile) */
+  gap: 20px;
+}
+
+/* File: style.css (append at the end) */
+/* Why: eliminate peeking by making each slide exactly 100% width, no gaps. */
+.carousel { position:relative;
+overflow:hidden;
+width:100%;
+max-width:500px;
+margin:0 auto;
+border-radius:12px;
+background:none;
+box-shadow:none
+  
+}
+.carousel-track {
+  display:flex;
+gap:0;
+padding:0;
+margin:0;
+transform:translate3d(0,0,0);
+transition:transform .5s ease-in-out;
+touch-action:pan-y
+}
+.slide {
+  flex:0 0 100%;/* each slide is the full viewport of the carousel */}
+.slide img {
+  display:block;
+  width:100%;
+  height:auto;object-fit:cover;
+  border-radius:12px}
+/* Buttons */
+.carousel-button {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  border:none;
+  border-radius:50%;
+  background:rgba(0,0,0,.5);
+  color:#fff;
+  width:40px;
+  height:40px;
+  cursor:pointer
+}
+.carousel-button.prev {
+  left:10px
+}
+.carousel-button.next {
+  right:10px
+}
+/* Desktop layout: smaller carousel (40%) */
+@media (min-width:768px) {
+  .single-product {
+    display:flex;gap:30px;align-items:flex-start
+  }
+  .carousel {
+    flex:0.4
+  }
+  .product-info {
+    flex:0.6
+  }
+    }
