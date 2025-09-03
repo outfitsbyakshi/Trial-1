@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outfits by Akshi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+    <!-- Hamburger icon -->
+  <button class="menu-btn" onclick="openSidebar()">☰</button>
+
+  <!-- Sidebar -->
+  <div id="mySidebar" class="sidebar">
+    <span class="close-btn" onclick="closeSidebar()">×</span>
+    <a href="index.html">Home</a>
+
+<!-- Dropdown menu starts -->
+<div class="has-submenu">
+  <a href="javascript:void(0)" onclick="toggleSubmenu()">Categories ▼</a>
+  <div class="submenu" id="submenu">
+    <a href="Tops.html">Dresses</a>
+    <a href="Skirts.html">Shoes</a>
+    <a href="Accessories.html">Accessories</a>
+  </div>
+</div>
+<!-- Dropdown menu ends -->
+
+<a href="#">Contact</a>
+  </div>
+    <div>
+      <h1>Outfits By Akshi</h1>
+    </div>
+    <nav>
+<a href="javascript:void(0)" onclick="openCart()" class="cart">
+  🛒
+  <span id="cart-count" class="cart-badge">0</span>
+</a>
+    </nav>
+    <!-- Cart Panel -->
+    <div id="cartPanel" class="cart-panel">
+      <button class="close-btn" onclick="closeCart()">✖</button>
+      <iframe src="cart.html" class="cart-frame"></iframe>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Product with auto cart data -->
+    <div class="product" 
+         data-name="Coffee Brown skorts" 
+         data-price="5" 
+         data-image="https://i.ibb.co/ccB5Hx1R/IMG-20250903-172158.jpg">
+      
+<div class="single-product">
+<!-- File: product.html (only the carousel section) -->
+<div class="carousel" data-carousel>
+  <button class="carousel-button prev" type="button" aria-label="Previous" data-carousel-prev>❮</button>
+
+  <div class="carousel-viewport" data-carousel-viewport>
+    <div class="carousel-track" data-carousel-track>
+      <div class="slide"><img src="https://i.ibb.co/FqdmQDqP/IMG-20250903-175434.jpg" alt="Coffee Brown Skorts — photo 1" loading="lazy"></div>
+      <div class="slide"><img src="https://i.ibb.co/39DNq5ND/IMG-20250903-173355.jpg" alt="Coffee Brown Skorts — photo 2" loading="lazy"></div>
+      <div class="slide"><img src="https://i.ibb.co/sJXhfqjg/IMG-20250903-173320.jpg" alt="Coffee Brown Skorts— photo 3" loading="lazy"></div>
+       <div class="slide"><img src="https://i.ibb.co/LztGVJpn/IMG-20250903-173251.jpg" alt="Coffee Brown Skorts — photo 4" loading="lazy"></div>
+       <div class="slide"><img src=" https://i.ibb.co/cc7TDL00/IMG-20250903-173010.jpg " alt="Coffee Brown Skorts — photo 5" loading="lazy"></div>
+    </div>
+  </div>
+
+  <button class="carousel-button next" type="button" aria-label="Next" data-carousel-next>❯</button>
+</div>
+      <div class="product-info">
+        <h1>Coffee Brown skorts</h1>
+       <h2> <p>Price : ₹5</p></h2>
+        <p>
+          <h2>Description:</h2>
+
+These chic camel-brown skorts feature a stylish wrap-over front with a curved hem and a side flap pocket detail. Designed to combine the elegance of a skirt with the comfort of shorts.
+        </p>
+
+<li>Material: Flat Woven </li>
+
+<li>Color: Coffee Brown</li>
+
+<li>Print: Solid</li>
+
+<li>Style: Skorts</li>
+
+<li>Length: Mini</li>
+
+
+
+        <label for="size">Select Size:</label>
+        <select id="size">
+          <option value="XS">XS</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+        </select>
+        </div>
+
+        <br><br>
+        <!-- Sticky Footer Bar -->
+<div class="footer-bar">
+  <div class="footer-buttons">
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button class="btn-white add-to-cart">Add to Cart</button>
+          <button class="btn-black buy-now">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div id="toast"></div>
+
+
+  <script src="Product.js"></script>
+</body>
+  </html>
