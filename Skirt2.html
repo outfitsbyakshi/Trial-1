@@ -8,43 +8,7 @@
 </head>
 <body>
 
-<header style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
-    <!-- Hamburger icon -->
-  <button class="menu-btn" onclick="openSidebar()">☰</button>
-
-  <!-- Sidebar -->
-  <div id="mySidebar" class="sidebar">
-    <span class="close-btn" onclick="closeSidebar()">×</span>
-    <a href="index.html">Home</a>
-
-<!-- Dropdown menu starts -->
-<div class="has-submenu">
-  <a href="javascript:void(0)" onclick="toggleSubmenu()">Categories ▼</a>
-  <div class="submenu" id="submenu">
-    <a href="Tops.html">Dresses</a>
-    <a href="Skirts.html">Shoes</a>
-    <a href="Accessories.html">Accessories</a>
-  </div>
-</div>
-<!-- Dropdown menu ends -->
-
-<a href="#">Contact</a>
-  </div>
-    <div>
-      <h1>Outfits By Akshi</h1>
-    </div>
-    <nav>
-<a href="javascript:void(0)" onclick="openCart()" class="cart">
-  🛒
-  <span id="cart-count" class="cart-badge">0</span>
-</a>
-    </nav>
-    <!-- Cart Panel -->
-    <div id="cartPanel" class="cart-panel">
-      <button class="close-btn" onclick="closeCart()">✖</button>
-      <iframe src="cart.html" class="cart-frame"></iframe>
-    </div>
-  </header>
+<div id="header"></div>
 
   <div class="container">
     <!-- Product with auto cart data -->
@@ -117,4 +81,4 @@ These chic camel-brown skorts feature a stylish wrap-over front with a curved he
 
   <script src="Product.js"></script>
 </body>
-  </html>
+    </html>
