@@ -344,4 +344,10 @@ document.querySelectorAll('.has-submenu > a').forEach(menu => {
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('[data-carousel]').forEach((el) => new Carousel(el));
     });
+     // Load footer.html dynamically
+    fetch("Footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
     
