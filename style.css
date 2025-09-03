@@ -36,7 +36,8 @@
     header img.cart-icon {
   width: 28px;
   filter: contrast(1.2);
-}header nav a.cart {
+}
+header nav a.cart {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,7 +108,7 @@
   padding: 20px;
 }
 
-.product-grid {
+.display-grid {
   display: flex;
   overflow-x: auto;
   gap: 16px;
@@ -115,7 +116,7 @@
   scroll-behavior: smooth;
 }
 
-.product-grid::-webkit-scrollbar {
+.display-grid::-webkit-scrollbar {
   display: none; /* hides scrollbar for cleaner look */
 }
 
@@ -577,124 +578,107 @@ footer a:hover {
 }
 .submenu.active {
   display: block;
-}
- /*product card with carousel
- /* Carousel container */
-.single-product .carousel {
-  width: 100%;
-  max-width: 350px;
-  margin: 0 auto;
-  overflow: hidden; /* hide extra images */
+}/* Carousel Container */
+.carousel {
   position: relative;
-  border-radius: 10px;
-}
-
-/* Track with multiple images */
-.single-product .carousel-track {
-  display: flex;
-  transition: transform 0.4s ease-in-out;
-}
-
-/* Each image should take full carousel width */
-.single-product .carousel-track img {
   width: 100%;
-  height: 400px;   /* same fixed height */
-  object-fit: contain;  
-  background: #f8f8f8; /* fills blank space */
+  max-width: 500px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #f9f9f9;
+}
+
+/* Viewport */
+.carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Track (slides container) */
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Each Slide */
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
   border-radius: 10px;
 }
 
-/* Arrows */
-.single-product .carousel-button {
+/* Navigation Buttons */
+.carousel-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.5);
-  color: white;
+  color: #fff;
   border: none;
-  font-size: 20px;
-  padding: 8px 12px;
+  font-size: 1.5rem;
   cursor: pointer;
+  padding: 8px 12px;
   border-radius: 50%;
+  z-index: 10;
+  transition: background 0.3s;
+}
+.carousel-button:hover {
+  background: rgba(0, 0, 0, 0.8);
 }
 
-.single-product .carousel-button.prev {
+/* Left & Right Button Positions */
+.carousel-button.prev {
   left: 10px;
 }
-
-.single-product .carousel-button.next {
+.carousel-button.next {
   right: 10px;
 }
-/* Container to limit max width */
-.container {
-  max-width: 1000px;   /* keeps it neat on desktop */
-  margin: 0 auto;
-  padding: 20px;
-}
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 products per row */
+      gap: 25px;
+    }
 
-/* Make carousel + info side by side on desktop */
-.single-product {
-  display: flex;
-  flex-direction: column; /* default: stacked (mobile) */
-  gap: 20px;
-}
+    /* Responsive for mobiles */
+    @media(max-width: 768px) {
+      .product-grid {
+        grid-template-columns: 1fr; /* 1 product per row on small screens */
+      }
+    }
 
-/* File: style.css (append at the end) */
-/* Why: eliminate peeking by making each slide exactly 100% width, no gaps. */
-.carousel { position:relative;
-overflow:hidden;
-width:100%;
-max-width:500px;
-margin:0 auto;
-border-radius:12px;
-background:none;
-box-shadow:none
-  
-}
-.carousel-track {
-  display:flex;
-gap:0;
-padding:0;
-margin:0;
-transform:translate3d(0,0,0);
-transition:transform .5s ease-in-out;
-touch-action:pan-y
-}
-.slide {
-  flex:0 0 100%;/* each slide is the full viewport of the carousel */}
-.slide img {
-  display:block;
-  width:100%;
-  height:auto;object-fit:cover;
-  border-radius:12px}
-/* Buttons */
-.carousel-button {
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  border:none;
-  border-radius:50%;
-  background:rgba(0,0,0,.5);
-  color:#fff;
-  width:40px;
-  height:40px;
-  cursor:pointer
-}
-.carousel-button.prev {
-  left:10px
-}
-.carousel-button.next {
-  right:10px
-}
-/* Desktop layout: smaller carousel (40%) */
-@media (min-width:768px) {
-  .single-product {
-    display:flex;gap:30px;align-items:flex-start
-  }
-  .carousel {
-    flex:0.4
-  }
-  .product-info {
-    flex:0.6
-  }
+    .product-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .product-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .product-price {
+      font-size: 16px;
+      color: #e91e63;
+      margin-bottom: 10px;
     }
