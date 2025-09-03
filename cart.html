@@ -4,13 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Your Cart</title>
-<link rel="stylesheet" href="style.css">
-  </style>
-</head>
+  <link rel="stylesheet" href="style.css">
 <body>
   <header>
     <div>
-      <h1>Outfits By Akshi</h1> 
+      <h1>Outfits By Akshi</h1>
+      <p>Curated By You, For You</p>
     </div>
   </header>
   <header>
@@ -61,7 +60,7 @@
         <div class="item-details">
           <strong>${item.name}</strong><br/>
           Size: ${item.size}<br/>
-          Price: ₹${item.price ? item.price.toFixed(2) : "0.00"}
+          Price: $${item.price ? item.price.toFixed(2) : "0.00"}
         </div>
         <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
       `;
@@ -69,7 +68,7 @@
       cartContainer.appendChild(div);
     });
 
-    totalPriceElement.textContent = "Total: ₹" + total.toFixed(2);
+    totalPriceElement.textContent = "Total: $" + total.toFixed(2);
     updateCartCount();
   }
 
