@@ -244,6 +244,12 @@ document.querySelectorAll('.has-submenu > a').forEach(menu => {
     menu.parentElement.classList.toggle('open');
   });
 });
+ // Load header.html dynamically
+    fetch("header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
 // swipe image
     class Carousel {
       constructor(root) {
@@ -338,3 +344,4 @@ document.querySelectorAll('.has-submenu > a').forEach(menu => {
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('[data-carousel]').forEach((el) => new Carousel(el));
     });
+    
