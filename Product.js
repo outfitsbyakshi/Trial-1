@@ -245,113 +245,96 @@ document.querySelectorAll('.has-submenu > a').forEach(menu => {
   });
 });
 // swipe image
-const track = document.querySelector('.carousel-track');
-let startX = 0;
-let currentTranslate = 0;
-let prevTranslate = 0;
-let index = 0;
-const images = track.querySelectorAll('img');
+    class Carousel {
+      constructor(root) {
+        this.root = root;
+        this.viewport = root.querySelector('[data-carousel-viewport]');
+        this.track = root.querySelector('[data-carousel-track]');
+        this.slides = Array.from(this.track.children);
+        this.prevBtn = root.querySelector('[data-carousel-prev]');
+        this.nextBtn = root.querySelector('[data-carousel-next]');
+        this.dotsWrap = root.querySelector('[data-carousel-dots]');
 
-// Set width dynamically
-function updateCarousel() {
-  const width = images[0].clientWidth;
-  track.style.transform = `translateX(${-index * width}px)`;
-}
-window.addEventListener('resize', updateCarousel);
-updateCarousel();
+        this.index = 0;
+        this.slideWidth = 0;
 
-// Button navigation
-document.querySelector('.next').addEventListener('click', () => {
-  if (index < images.length - 1) index++;
-  updateCarousel();
-});
-document.querySelector('.prev').addEventListener('click', () => {
-  if (index > 0) index--;
-  updateCarousel();
-});
+        this.onResize = this.onResize.bind(this);
+        this.onKey = this.onKey.bind(this);
 
-// Touch/swipe navigation
-track.addEventListener('touchstart', (e) => {
-  startX = e.touches[0].clientX;
-});
+        this.init();
+      }
 
-track.addEventListener('touchend', (e) => {
-  const endX = e.changedTouches[0].clientX;
-  if (startX - endX > 50 && index < images.length - 1) {
-    index++; // swipe left → next
-  } else if (endX - startX > 50 && index > 0) {
-    index--; // swipe right → prev
-  }
-  updateCarousel();
-});
-// File: Product.js (carousel logic)
-// Limited ends (no infinite loop)
-document.addEventListener("DOMContentLoaded", () => {
-  const carousel = document.querySelector(".carousel");
-  if (!carousel) return;
+      init() {
+        if (!this.slides.length) return;
+        this.createDots();
+        this.bind();
+        this.measure();
+        this.update(false);
+      }
 
-  const track = carousel.querySelector(".carousel-track");
-  const slides = Array.from(track.querySelectorAll(".slide"));
-  const prevBtn = carousel.querySelector(".prev");
-  const nextBtn = carousel.querySelector(".next");
+      bind() {
+        this.prevBtn?.addEventListener('click', () => this.go(-1));
+        this.nextBtn?.addEventListener('click', () => this.go(1));
+        this.root.addEventListener('keydown', this.onKey);
+        window.addEventListener('resize', this.onResize);
 
-  let index = 0;
-  let isDragging = false;
-  let startX = 0, deltaX = 0;
-  const threshold = 50; // min drag distance
+        // Pointer/Touch swipe
+        let startX = 0, deltaX = 0, dragging = false;
+        const start = (x) => { dragging = true; startX = x; this.track.style.transition = 'none'; };
+        const move = (x) => { if (!dragging) return; deltaX = x - startX; this.translate(-this.index * this.slideWidth + deltaX); };
+        const end = () => {
+          if (!dragging) return; dragging = false; this.track.style.transition = 'transform .35s ease';
+          const threshold = Math.max(40, this.slideWidth * 0.15); // why: avoid accidental swipes on small screens
+          if (Math.abs(deltaX) > threshold) this.go(deltaX > 0 ? -1 : 1); else this.update();
+          deltaX = 0;
+        };
 
-  const goTo = (i, withTransition = true) => {
-    // clamp index between 0 and slides.length - 1
-    index = Math.max(0, Math.min(i, slides.length - 1));
-    track.style.transition = withTransition ? "transform 0.35s ease-in-out" : "none";
-    track.style.transform = `translate3d(-${index * 100}%, 0, 0)`;
-  };
+        this.viewport.addEventListener('touchstart', (e) => start(e.touches[0].clientX), { passive: true });
+        this.viewport.addEventListener('touchmove', (e) => move(e.touches[0].clientX), { passive: true });
+        this.viewport.addEventListener('touchend', end);
 
-  // Button controls
-  nextBtn?.addEventListener("click", () => goTo(index + 1));
-  prevBtn?.addEventListener("click", () => goTo(index - 1));
+        this.viewport.addEventListener('mousedown', (e) => start(e.clientX));
+        window.addEventListener('mousemove', (e) => move(e.clientX));
+        window.addEventListener('mouseup', end);
+      }
 
-  // --- Swipe controls ---
-  const onStart = (x) => {
-    isDragging = true;
-    startX = x;
-    deltaX = 0;
-    track.style.transition = "none"; 
-  };
+      onResize() { this.measure(); this.update(false); }
 
-  const onMove = (x) => {
-    if (!isDragging) return;
-    deltaX = x - startX;
-    const percent = (deltaX / carousel.clientWidth) * 100;
-    track.style.transform = `translate3d(calc(${-index * 100}% + ${-percent}%), 0, 0)`;
-  };
+      onKey(e) {
+        if (e.key === 'ArrowLeft') this.go(-1);
+        if (e.key === 'ArrowRight') this.go(1);
+      }
 
-  const onEnd = () => {
-    if (!isDragging) return;
-    isDragging = false;
+      measure() {
+        this.slideWidth = this.viewport.clientWidth;
+        this.slides.forEach((s) => (s.style.minWidth = this.slideWidth + 'px'));
+      }
 
-    if (deltaX < -threshold && index < slides.length - 1) {
-      goTo(index + 1);
-    } else if (deltaX > threshold && index > 0) {
-      goTo(index - 1);
-    } else {
-      goTo(index); // snap back
+      createDots() {
+        this.dots = this.slides.map((_, i) => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('aria-label', `Go to slide ${i + 1}`);
+          b.addEventListener('click', () => { this.index = i; this.update(); });
+          this.dotsWrap.appendChild(b);
+          return b;
+        });
+      }
+
+      go(step) { this.index = Math.max(0, Math.min(this.slides.length - 1, this.index + step)); this.update(); }
+
+      update(animate = true) {
+        this.track.style.transition = animate ? 'transform .35s ease' : 'none';
+        this.translate(-this.index * this.slideWidth);
+        this.prevBtn.disabled = this.index === 0;
+        this.nextBtn.disabled = this.index === this.slides.length - 1;
+        this.dots.forEach((d, i) => d.setAttribute('aria-current', i === this.index ? 'true' : 'false'));
+      }
+
+      translate(px) { this.track.style.transform = `translateX(${px}px)`; }
     }
-  };
 
-  // Touch
-  track.addEventListener("touchstart", (e) => onStart(e.touches[0].clientX), { passive: true });
-  track.addEventListener("touchmove", (e) => onMove(e.touches[0].clientX), { passive: true });
-  track.addEventListener("touchend", onEnd);
-
-  // Mouse (desktop drag)
-  track.addEventListener("mousedown", (e) => onStart(e.clientX));
-  window.addEventListener("mousemove", (e) => onMove(e.clientX));
-  window.addEventListener("mouseup", onEnd);
-
-  // Keep correct position on resize
-  window.addEventListener("resize", () => goTo(index, false));
-
-  // Init
-  goTo(0, false);
-});
+    // Auto-init all carousels on the page
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-carousel]').forEach((el) => new Carousel(el));
+    });
