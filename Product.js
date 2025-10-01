@@ -285,19 +285,19 @@ const allProducts = [
   },
   {
     name: "Skirt 1",
-    image: "IMAGE_URL_FOR_SKIRT1",
+    image: "https://i.ibb.co/rGz1XYcg/file-000000001f70622fb02938950fb2e3af.png",
     price: "₹PRICE4",
     link: "Skirt1.html"
   },
   {
     name: "Skirt 2",
-    image: "IMAGE_URL_FOR_SKIRT2",
+    image: "https://i.ibb.co/cc7TDL00/IMG-20250903-173010.jpg",
     price: "₹PRICE5",
     link: "Skirt2.html"
   },
   {
     name: "Skirt 3",
-    image: "IMAGE_URL_FOR_SKIRT3",
+    image: "https://i.ibb.co/n8YBRRzc/IMG-20250903-180406.jpg",
     price: "₹PRICE6",
     link: "Skirt3.html"
   }
