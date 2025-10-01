@@ -7,44 +7,36 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div id="header"></div>
-
+  <div id="header"></div>
   <div class="container">
     <!-- Product with auto cart data -->
     <div class="product" 
          data-name="Blush Pink Floral Midi Skirt" 
          data-price="5" 
          data-image="https://i.ibb.co/n8YBRRzc/IMG-20250903-180406.jpg">
-      
-<div class="single-product">
-<!-- File: product.html (only the carousel section) -->
-<div class="carousel" data-carousel>
-  <button class="carousel-button prev" type="button" aria-label="Previous" data-carousel-prev>❮</button>
-
-  <div class="carousel-viewport" data-carousel-viewport>
-    <div class="carousel-track" data-carousel-track>
-      <div class="slide"><img src="https://i.ibb.co/SDs9FVtz/IMG-20250903-180436.jpg" alt="Blush Pink Floral Midi Skirt— photo 1" loading="lazy"></div>
-      <div class="slide"><img src="https://i.ibb.co/6RZ5TtsY/IMG-20250903-181528.jpg" alt="Coffee Brown Skorts — photo 2" loading="lazy"></div>
-      <div class="slide"><img src="https://i.ibb.co/k2sMTBBn/IMG-20250903-181550.jpg" alt="Coffee Brown Skorts— photo 3" loading="lazy"></div>
-       <div class="slide"><img src="https://i.ibb.co/VpDnghm5/IMG-20250903-181612.jpg" alt="Coffee Brown Skorts — photo 4" loading="lazy"></div>
-       <div class="slide"><img src="https://i.ibb.co/0RwjFYPZ/IMG-20250903-182749.jpg" alt="Coffee Brown Skorts — photo 4" loading="lazy"></div>
-       <div class="slide"><img src="https://i.ibb.co/n8YBRRzc/IMG-20250903-180406.jpg" alt="Coffee Brown Skorts — photo 5" loading="lazy"></div>
-    </div>
-  </div>
-
-  <button class="carousel-button next" type="button" aria-label="Next" data-carousel-next>❯</button>
-</div>
-      <div class="product-info">
-        <h1>Blush Pink Floral Midi Skirt</h1>
-       <h2> <p>Price : ₹5</p></h2>
-        <p>
-          <h2>Description:</h2>
+      <div class="single-product">
+        <!-- Carousel section -->
+        <div class="carousel" data-carousel>
+          <button class="carousel-button prev" type="button" aria-label="Previous" data-carousel-prev>❮</button>
+          <div class="carousel-viewport" data-carousel-viewport>
+            <div class="carousel-track" data-carousel-track>
+              <div class="slide"><img src="https://i.ibb.co/SDs9FVtz/IMG-20250903-180436.jpg" alt="photo 1" loading="lazy"></div>
+              <div class="slide"><img src="https://i.ibb.co/6RZ5TtsY/IMG-20250903-181528.jpg" alt="photo 2" loading="lazy"></div>
+              <div class="slide"><img src="https://i.ibb.co/k2sMTBBn/IMG-20250903-181550.jpg" alt="photo 3" loading="lazy"></div>
+              <div class="slide"><img src="https://i.ibb.co/VpDnghm5/IMG-20250903-181612.jpg" alt="photo 4" loading="lazy"></div>
+              <div class="slide"><img src="https://i.ibb.co/n8YBRRzc/IMG-20250903-180406.jpg" alt="photo 5" loading="lazy"></div>
+            </div>
+          </div>
+          <button class="carousel-button next" type="button" aria-label="Next" data-carousel-next>❯</button>
+        </div>
+        <div class="product-info">
+          <h1></h1>Blush Pink Floral Midi Skirt  </h1>
+          <h2><p>Price : $5</p></h2>
+          <p>
+            <h2>Description:</h2>
 Add a touch of effortless femininity to your wardrobe with this blush pink floral midi skirt. Designed with a flattering A-line silhouette, it features a delicate all-over white floral print that gives it a soft, romantic charm. The subtle side slit adds a modern twist, offering both comfort and ease of movement.
-
-        </p>
-
-<li>Material: Flat Woven </li>
+          </p>
+          <ul><li>Material: Flat Woven </li>
 
 <li>Color: Pink</li>
 
@@ -53,33 +45,37 @@ Add a touch of effortless femininity to your wardrobe with this blush pink flora
 <li>Style: A-Line</li>
 
 <li>Length: Midi</li>
-
-
-
-        <label for="size">Select Size:</label>
-        <select id="size">
-          <option value="XS">XS</option>
-          <option value="S">S</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-          <option value="XL">XL</option>
-        </select>
+          </ul>
+          <label for="size">Select Size:</label>
+          <select id="size">
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+          </select>
         </div>
-
         <br><br>
         <!-- Sticky Footer Bar -->
-<div class="footer-bar">
-  <div class="footer-buttons">
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <button class="btn-white add-to-cart">Add to Cart</button>
-          <button class="btn-black buy-now">Buy Now</button>
+        <div class="footer-bar">
+          <div class="footer-buttons">
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <button class="btn-white add-to-cart">Add to Cart</button>
+              <button class="btn-black buy-now">Buy Now</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-<div id="toast"></div>
-
-
+  <!-- Featured Products now OUTSIDE product container: -->
+  <section class="featured-products">
+    <h2>Featured Products</h2>
+    <div class="display-grid" id="featured-products-grid"></div>
+  </section>
+  <!-- Footer now OUTSIDE product container: -->
+  <div id="footer"></div>
+  <div id="toast"></div>
   <script src="Product.js"></script>
 </body>
-    </html>
+</html>
