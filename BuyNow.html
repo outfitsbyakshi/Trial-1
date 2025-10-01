@@ -69,7 +69,7 @@
       `;
       total += item.price;
     });
-    orderTotalP.textContent = "Total: ₹" + total.toFixed(2);
+    orderTotalP.textContent = "Total: $" + total.toFixed(2);
   }
 
   orderForm.addEventListener("submit", function(e) {
@@ -80,7 +80,7 @@
       email: document.getElementById("email").value,
       phone: document.getElementById("phone").value,
       address: document.getElementById("address").value,
-      items: items.map(item => `${item.name} (Size: ${item.size}) - ₹${item.price}`).join('; '),
+      items: items.map(item => `${item.name} (Size: ${item.size}) - $${item.price}`).join('; '),
       total: total.toFixed(2),
       date: new Date().toLocaleString()
     };
