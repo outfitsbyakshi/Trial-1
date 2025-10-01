@@ -7,43 +7,38 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div id="header"></div>
-
+  <div id="header"></div>
   <div class="container">
     <!-- Product with auto cart data -->
     <div class="product" 
          data-name="Classic Black and White Polka Dot Midi Skirt" 
          data-price="5" 
          data-image="https://i.ibb.co/rGz1XYcg/file-000000001f70622fb02938950fb2e3af.png">
-      
-<div class="single-product">
-<!-- File: product.html (only the carousel section) -->
-<div class="carousel" data-carousel>
-  <button class="carousel-button prev" type="button" aria-label="Previous" data-carousel-prev>❮</button>
-
-  <div class="carousel-viewport" data-carousel-viewport>
-    <div class="carousel-track" data-carousel-track>
-      <div class="slide"><img src="https://i.ibb.co/Gf8vcKXV/8be662f25008e4ceaf1b7b086bf8c373.jpg" alt="Polka dot skirt — photo 1" loading="lazy"></div>
-      <div class="slide"><img src="https://i.ibb.co/Mxq4GS4J/Generated-Image-September-02-2025-12-28-PM.jpg" alt="Polka dot skirt — photo 2" loading="lazy"></div>
-      <div class="slide"><img src="https://i.ibb.co/dJHM6fZB/file-00000000b1a86230ada622e246f3e4f1.png" alt="Polka dot skirt— photo 3" loading="lazy"></div>
-       <div class="slide"><img src="https://i.ibb.co/jkJhP6k3/IMG-20250903-133451.jpg" alt="Polka dot skirt — photo 4" loading="lazy"></div>
-       <div class="slide"><img src="https://i.ibb.co/rGz1XYcg/file-000000001f70622fb02938950fb2e3af.png" alt="Polka dot skirt — photo 4" loading="lazy"></div>
-    </div>
-  </div>
-
-  <button class="carousel-button next" type="button" aria-label="Next" data-carousel-next>❯</button>
-</div>
-      <div class="product-info">
-        <h1> Classic Black and White Polka Dot Midi Skirt</h1>
-       <h2> <p>Price : ₹5</p></h2>
-        <p>
-          <h2>Description:</h2>
-
-Timeless and versatile, this black-and-white polka dot midi skirt is a must-have for every wardrobe. Designed with a flattering A-line silhouette, it flows gracefully with every step, offering both comfort and elegance. The playful polka dot pattern brings a vintage charm, while its neutral palette makes it easy to style for any occasion.
-        </p>
-
-<li>Material: Flat Woven </li>
+      <div class="single-product">
+        <!-- Carousel section -->
+        <div class="carousel" data-carousel>
+          <button class="carousel-button prev" type="button" aria-label="Previous" data-carousel-prev>❮</button>
+          <div class="carousel-viewport" data-carousel-viewport>
+            <div class="carousel-track" data-carousel-track>
+              <div class="slide"><img src="https://i.ibb.co/Gf8vcKXV/8be662f25008e4ceaf1b7b086bf8c373.jpg" alt="photo 1" loading="lazy"></div>
+              <div class="slide"><img src="https://i.ibb.co/Mxq4GS4J/Generated-Image-September-02-2025-12-28-PM.jpg" alt="photo 2" loading="lazy"></div>
+              <div class="slide"><img src="https://i.ibb.co/dJHM6fZB/file-00000000b1a86230ada622e246f3e4f1.png" alt="photo 3" loading="lazy"></div>
+              <div class="slide"><img src="https://i.ibb.co/jkJhP6k3/IMG-20250903-133451.jpg" alt="photo 4" loading="lazy"></div>
+              <div class="slide"><img src="https://i.ibb.co/rGz1XYcg/file-000000001f70622fb02938950fb2e3af.png" alt="photo 5" loading="lazy"></div>
+            </div>
+          </div>
+          <button class="carousel-button next" type="button" aria-label="Next" data-carousel-next>❯</button>
+        </div>
+        <div class="product-info">
+          <h1>
+          Classic Black and White Polka Dot Midi Skirt</h1>
+          <h2><p>Price : $5</p></h2>
+          <p>
+            <h2>Description:</h2>
+            Timeless and versatile, this black-and-white polka dot midi skirt is a must-have for every wardrobe. Designed with a flattering A-line silhouette, it flows gracefully with every step, offering both comfort and elegance. The playful polka dot pattern brings a vintage charm, while its neutral palette makes it easy to style for any occasion.
+          </p>
+          <ul>
+            <li>Material: Flat Woven </li>
 
 <li>Color: White with Black Polka dots</li>
 
@@ -52,33 +47,37 @@ Timeless and versatile, this black-and-white polka dot midi skirt is a must-have
 <li>Style: A-line</li>
 
 <li>Length: Midi</li>
-
-
-
-        <label for="size">Select Size:</label>
-        <select id="size">
-          <option value="XS">XS</option>
-          <option value="S">S</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-          <option value="XL">XL</option>
-        </select>
+          </ul>
+          <label for="size">Select Size:</label>
+          <select id="size">
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+          </select>
         </div>
-
         <br><br>
         <!-- Sticky Footer Bar -->
-<div class="footer-bar">
-  <div class="footer-buttons">
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <button class="btn-white add-to-cart">Add to Cart</button>
-          <button class="btn-black buy-now">Buy Now</button>
+        <div class="footer-bar">
+          <div class="footer-buttons">
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <button class="btn-white add-to-cart">Add to Cart</button>
+              <button class="btn-black buy-now">Buy Now</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-<div id="toast"></div>
-
-
+  <!-- Featured Products now OUTSIDE product container: -->
+  <section class="featured-products">
+    <h2>Featured Products</h2>
+    <div class="display-grid" id="featured-products-grid"></div>
+  </section>
+  <!-- Footer now OUTSIDE product container: -->
+  <div id="footer"></div>
+  <div id="toast"></div>
   <script src="Product.js"></script>
 </body>
-    </html>
+</html>
