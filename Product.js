@@ -185,7 +185,9 @@ function toggleSubmenu() {
 }
 
 // Carousel - swipe image and buttons
-class Carousel {
+// --- Core Carousel (No dots, just prev/next buttons + swipe/touch) ---
+
+class SimpleCarousel {
   constructor(root) {
     this.root = root;
     this.viewport = root.querySelector('[data-carousel-viewport]');
@@ -193,19 +195,16 @@ class Carousel {
     this.slides = Array.from(this.track.children);
     this.prevBtn = root.querySelector('[data-carousel-prev]');
     this.nextBtn = root.querySelector('[data-carousel-next]');
-    this.dotsWrap = root.querySelector('[data-carousel-dots]');
     this.index = 0;
     this.slideWidth = 0;
 
     this.onResize = this.onResize.bind(this);
-    this.onKey = this.onKey.bind(this);
 
     this.init();
   }
 
   init() {
     if (!this.slides.length) return;
-    this.createDots();
     this.bind();
     this.measure();
     this.update(false);
@@ -214,10 +213,9 @@ class Carousel {
   bind() {
     this.prevBtn?.addEventListener('click', () => this.go(-1));
     this.nextBtn?.addEventListener('click', () => this.go(1));
-    this.root.addEventListener('keydown', this.onKey);
     window.addEventListener('resize', this.onResize);
 
-    // Pointer/Touch swipe
+    // Touch + Mouse swipe
     let startX = 0, deltaX = 0, dragging = false;
     const start = (x) => { dragging = true; startX = x; this.track.style.transition = 'none'; };
     const move = (x) => { if (!dragging) return; deltaX = x - startX; this.translate(-this.index * this.slideWidth + deltaX); };
@@ -239,25 +237,9 @@ class Carousel {
 
   onResize() { this.measure(); this.update(false); }
 
-  onKey(e) {
-    if (e.key === 'ArrowLeft') this.go(-1);
-    if (e.key === 'ArrowRight') this.go(1);
-  }
-
   measure() {
     this.slideWidth = this.viewport.clientWidth;
     this.slides.forEach((s) => (s.style.minWidth = this.slideWidth + 'px'));
-  }
-
-  createDots() {
-    this.dots = this.slides.map((_, i) => {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.setAttribute('aria-label', `Go to slide ${i + 1}`);
-      b.addEventListener('click', () => { this.index = i; this.update(); });
-      this.dotsWrap.appendChild(b);
-      return b;
-    });
   }
 
   go(step) {
@@ -270,8 +252,72 @@ class Carousel {
     this.translate(-this.index * this.slideWidth);
     this.prevBtn.disabled = this.index === 0;
     this.nextBtn.disabled = this.index === this.slides.length - 1;
-    this.dots.forEach((d, i) => d.setAttribute('aria-current', i === this.index ? 'true' : 'false'));
   }
 
   translate(px) { this.track.style.transform = `translateX(${px}px)`; }
-                            }
+}
+
+// --- Initialize carousels on page ---
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll('[data-carousel]').forEach((el) => new SimpleCarousel(el));
+});
+
+// --- (Your other Product.js code for cart, toast, etc. can follow below...) ---
+ // Array of all possible featured products
+const allProducts = [
+  {
+    name: "Top 1",
+    image: "https://i.ibb.co/WNsXkBR1/IMG-20250904-135851.jpg",
+    price: "₹5",
+    link: "Top1.html"
+  },
+  {
+    name: "Top 2",
+    image: "https://i.ibb.co/VkbLkZY/IMG-20250904-152624.jpg",
+    price: "₹PRICE2",
+    link: "Top2.html"
+  },
+  {
+    name: "Top 3",
+    image: "https://i.ibb.co/hxSJSmnn/IMG-20250904-144343.jpg",
+    price: "₹PRICE3",
+    link: "Top3.html"
+  },
+  {
+    name: "Skirt 1",
+    image: "IMAGE_URL_FOR_SKIRT1",
+    price: "₹PRICE4",
+    link: "Skirt1.html"
+  },
+  {
+    name: "Skirt 2",
+    image: "IMAGE_URL_FOR_SKIRT2",
+    price: "₹PRICE5",
+    link: "Skirt2.html"
+  },
+  {
+    name: "Skirt 3",
+    image: "IMAGE_URL_FOR_SKIRT3",
+    price: "₹PRICE6",
+    link: "Skirt3.html"
+  }
+];
+
+// Shuffle and pick 3 random products
+function getRandomProducts(arr, n) {
+  const shuffled = arr.slice().sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, n);
+}
+
+const featured = getRandomProducts(allProducts, 9); // Change 9 to show more/less
+
+// Render as cards
+document.getElementById('featured-products-grid').innerHTML = featured.map(product => `
+  <div class="card">
+    <a href="${product.link}">
+      <img src="${product.image}" alt="${product.name}">
+      <p>${product.name}</p>
+      <p>${product.price}</p>
+    </a>
+  </div>
+`).join('');
