@@ -360,9 +360,7 @@ footer a:hover {
       color: green;
     }
         .product {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
+      display: block;
       background-color: #fff;
       padding: 1rem;
       margin-bottom: 2rem;
@@ -605,4 +603,4 @@ footer a:hover {
       font-size: 16px;
       color: #e91e63;
       margin-bottom: 10px;
-    }
+}
